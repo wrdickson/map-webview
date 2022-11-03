@@ -15,8 +15,18 @@
       >
         TileRip1
       </v-btn>
+      <v-btn
+        @click="currentView = 'map1'"
+        color="indigo lighten-4"
+        small
+      >
+        Map1
+      </v-btn>
       <TileRip1
         v-if="currentView === 'tileRip1'"
+      />
+      <Map1
+        v-if="currentView === 'map1'"
       />
     </v-content>
   </v-app>
@@ -24,10 +34,12 @@
 
 <script>
 import TileRip1 from './components/tileRip1.vue'
+import Map1 from './components/map1.vue'
 export default {
   name: 'App',
   components: {
-    TileRip1
+    TileRip1,
+    Map1
   },
   data: function () {
     return {
@@ -42,6 +54,7 @@ export default {
 
   },
   created () {
+    //  we have to expose android entry points to the global scope :-O
     window.toggleView = (action, payload) => {
       //  eslint-disable-next-line
       console.log('toggleView() - action: ', action, ' payload: ', payload)
@@ -50,6 +63,9 @@ export default {
           switch (payload) {
             case 'tileRip1':
               this.currentView = 'tileRip1'
+              break
+            case 'map1':
+              this.currentView = 'map1'
               break
           }
           break
@@ -60,7 +76,7 @@ export default {
     //  let android know when the app is mounted
     let somePayload = 'somePayload'
     //  eslint-disable-next-line
-    MapWebViewClient.appLoaded(somePayload)
+    MapViewClient.appLoaded(somePayload)
   }
 }
 </script>

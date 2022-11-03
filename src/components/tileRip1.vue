@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <v-container>
     <v-row
       no-gutters
     >
       <v-col>
-        <span>RootA: {{ rootA }}</span>
         <v-btn
           @click="btn1Click"
           class="mt-2"
@@ -73,7 +72,7 @@
     >
       something
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -127,8 +126,6 @@ export default {
   },
   created () {
     this.wHeight = window.innerHeight
-    //  eslint-disable-next-line
-    console.log('root', this.$root)
   },
   mounted () {
     window.onresize = () => {

@@ -33,5 +33,5 @@ module.exports = {
   //  publicPath: '/map-webview/'
 
   //  use for android webviews to run offline
-  publicPath: ''
+   publicPath: ''
 }
